@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "3a4c6b79-18ba-419a-b11e-c258bb54d6e6",
+		"name": "Grocery Booking API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Creation And Login",
+			"item": [
+				{
+					"name": "Register New Admin User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\" : \"person\",\n    \"lastName\" : \"last\",\n    \"email\" : \"admin@gmail.com\",\n    \"password\" : \"12345\",\n    \"role\" : \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register New Normal User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\" : \"person\",\n    \"lastName\" : \"last\",\n    \"email\" : \"normal@gmail.com\",\n    \"password\" : \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\" : \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NTg3MTAsImV4cCI6MTcwNjk0NTExMH0.UJrX8k7Uk_8cSaYNa2Y6YKZGOjlp1kmfhRsx7XsfGWE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/api/v1/auth-check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"auth-check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Operations",
+			"item": [
+				{
+					"name": "Get All Groceries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjExNTQsImV4cCI6MTcwNjk0NzU1NH0.lMyzCz5hiS0oVVluVFvamY3hD51AEPYyM5ZeiFUfieM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/api/v1/admin/groceries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add One Grocery Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Soap2\",\n    \"quantity\": 10,\n    \"price\": 20.5022\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/admin/groceries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Multiple Grocery Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\":\"Soap\",\n        \"quantity\": 10,\n        \"price\": 20.5022\n    },\n    {\n        \"name\":\"Pens\",\n        \"quantity\": 100,\n        \"price\": 5.00\n    },\n    {\n        \"name\":\"Books\",\n        \"quantity\": 22,\n        \"price\": 112.5\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/admin/groceries/multiple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"groceries",
+								"multiple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Grocery Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"84d4758b-8b54-4423-84f0-6ef29823edd9\",\n    \"price\": 97.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/api/v1/admin/groceries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Grocery Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/api/v1/admin/groceries/265b375d-2612-4602-ae06-f9ef2e9ed7d3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"groceries",
+								"265b375d-2612-4602-ae06-f9ef2e9ed7d3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hello Check",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNAZ21haWwuY29tIiwiaWF0IjoxNzA2ODExODY2LCJleHAiOjE3MDY4OTgyNjZ9.MZ9JS1iYNdqZwcJrNO6tYIYhn380PcqXLqRgtFNzFNc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api/v1/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place Grocery Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"grocer_item_id\": \"7801c470-d7e7-4d6e-8096-e6d4d7d43bb3\",\n        \"quantity\" : 50\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/v1/groceries/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"groceries",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Groceries",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MDY4NjIxNDEsImV4cCI6MTcwNjk0ODU0MX0.HpKPKelYmRAP4xpROcnpl2HM2QAn7CTZbNkbwqdpZq8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api/v1/groceries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"groceries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger API Docs (Admin Access Only)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/v3/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"v3",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

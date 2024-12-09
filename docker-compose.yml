@@ -1,0 +1,31 @@
+version: "1.2"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_DATABASE: grocery_store
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  grocery-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grocery-app
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/grocery_store
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      LOGGING_LEVEL_ROOT: INFO
+    #      SERVER_PORT: 8090
+    ports:
+      - "8088:8088"
+    links:
+      - mysql
